@@ -1,13 +1,13 @@
-package www.antiguaburguer.com;
+package www.AntiguaBurger.com.AntiguaBurger;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class AntiguaBurgerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(AntiguaBurgerApplication.class, args);
 	}
 
 }

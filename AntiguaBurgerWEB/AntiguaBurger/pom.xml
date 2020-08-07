@@ -8,11 +8,11 @@
 		<version>2.3.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>www</groupId>
-	<artifactId>antiguaburguer.com</artifactId>
+	<groupId>www.AntiguaBurger.com</groupId>
+	<artifactId>AntiguaBurger</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>antiguaburguer.com</name>
-	<description>Aplicación WEB AntiguaBurguer</description>
+	<name>AntiguaBurger</name>
+	<description>Proyecto Antigua Burger</description>
 
 	<properties>
 		<java.version>1.8</java.version>

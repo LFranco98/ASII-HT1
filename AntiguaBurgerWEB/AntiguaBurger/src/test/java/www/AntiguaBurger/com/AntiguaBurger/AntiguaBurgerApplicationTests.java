@@ -1,10 +1,10 @@
-package www.antiguaburguer.com;
+package www.AntiguaBurger.com.AntiguaBurger;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class AntiguaBurgerApplicationTests {
 
 	@Test
 	void contextLoads() {
