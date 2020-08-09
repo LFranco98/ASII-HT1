@@ -11,10 +11,10 @@
   </head>
   <body>
     <div class="form-group">
-      <form action="#" th:action="@{/desayunos}" th:object="${cashier}">
+      <form action="#" th:action="@{/desayunos}" th:object="${cashier}" method="post">
         <label >Cajero ID  </label>
         <input class="form-control" th:field="*{nombre}" placeholder="Daniel Cachier">
-        <button type="submit" class="btn btn-primary" id="btn-entrar" name="btn-entrar"></button>
+        <button type="submit" class="btn btn-primary" id="btn-entrar" name="btn-entrar">Entrar</button>
       </form>
     </div>
     <!-- Optional JavaScript -->
