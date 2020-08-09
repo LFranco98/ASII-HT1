@@ -15,7 +15,8 @@ public class Control implements IOrderControl{
 
     @Override
     @GetMapping
-    public String viewIndex() {
+    public String viewIndex(Model model) {
+        model.addAttribute("cashier", new Cashier());
         return "index";
     }
 
