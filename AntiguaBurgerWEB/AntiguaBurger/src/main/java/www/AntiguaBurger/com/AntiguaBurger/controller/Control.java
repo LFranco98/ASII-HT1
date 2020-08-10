@@ -32,9 +32,39 @@ public class Control implements IOrderControl{
             model.addAttribute("combo"+i, comida.getNombre_combo());
             model.addAttribute("precio"+i, comida.getPrecio());
         }
-        
+        model.addAttribute("cashier1", new Cashier());
         model.addAttribute("opcion", new String());
         return "desayunos";
+    }
+
+    @Override
+    @PostMapping("/almuerzos")
+    public String viewAlmuerzo(@ModelAttribute Cashier cashier, Model model) {
+        model.addAttribute("cashier", cashier.getNombre());
+        IConexion connect = new Conexion();
+        IFoods comida = new Foods();
+        for(int i=1;i<=2;i++){
+            comida = connect.QueryFoods("almuerzo"+i);
+            model.addAttribute("combo"+i, comida.getNombre_combo());
+            model.addAttribute("precio"+i, comida.getPrecio());
+        }
+        model.addAttribute("cashier1", new Cashier());
+        model.addAttribute("opcion", new String());
+        return "almuerzos";
+    }
+
+    @Override
+    @PostMapping("/Cenas")
+    public String viewCena(@ModelAttribute Cashier cashier, Model model) {
+        model.addAttribute("cashier", cashier.getNombre());
+        IConexion connect = new Conexion();
+        IFoods comida = new Foods();
+            comida = connect.QueryFoods("cena1");
+            model.addAttribute("combo", comida.getNombre_combo());
+            model.addAttribute("precio", comida.getPrecio());
+        model.addAttribute("cashier1", new Cashier());
+        model.addAttribute("opcion", new String());
+        return "almuerzos";
     }
     
 }
