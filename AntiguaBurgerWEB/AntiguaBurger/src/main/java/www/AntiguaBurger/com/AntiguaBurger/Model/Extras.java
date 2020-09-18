@@ -5,14 +5,24 @@ import java.util.List;
 
 
 public class Extras {
-    String extra[][];
+    private String extra;
+    private float precio;
 
-    public String[][] getExtra() {
+    public String getExtra() {
         return extra;
     }
 
-    public void setExtra(String[][] extra) {
+    public void setExtra(String extra) {
         this.extra = extra;
     }
-         
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    
 }

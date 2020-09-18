@@ -11,9 +11,9 @@
   </head>
   <body>
     <div class="form-group">
-      <form action="#" th:action="@{/desayunos}" th:object="${cashier}" method="post">
+      <form action="#" th:action="@{/menus}" th:object="${cashier}" method="post">
         <label >Cajero ID  </label>
-        <input class="form-control" th:field="*{nombre}" placeholder="Daniel Cachier">
+        <input class="form-control" th:field="*{username}" placeholder="DanielC">
         <button type="submit" class="btn btn-primary" id="btn-entrar" name="btn-entrar">Entrar</button>
       </form>
     </div>

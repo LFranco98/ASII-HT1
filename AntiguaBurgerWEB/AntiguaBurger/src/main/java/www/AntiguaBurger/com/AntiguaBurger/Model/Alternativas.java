@@ -1,25 +1,28 @@
 package www.AntiguaBurger.com.AntiguaBurger.Model;
 import java.util.List;
 
-public class Alternativas {
-    String alternativa_inic;
-    List<String> elem_altern;
+public class Alternativas implements IAlternativas{
+    private String alternativa_base;
+    private String alternativa_escogida;
 
-    public String getAlternativa_inic() {
-        return alternativa_inic;
+    @Override
+    public String getAlternativa_base() {
+        return alternativa_base;
     }
 
-    public void setAlternativa_inic(String alternativa_inic) {
-        this.alternativa_inic = alternativa_inic;
+    @Override
+    public void setAlternativa_base(String alternativa_base) {
+        this.alternativa_base = alternativa_base;
     }
 
-    public List<String> getElem_altern() {
-        return elem_altern;
+    @Override
+    public String getAlternativa_escogida() {
+        return alternativa_escogida;
     }
 
-    public void setElem_altern(List<String> elem_altern) {
-        this.elem_altern = elem_altern;
+    @Override
+    public void setAlternativa_escogida(String alternativa_escogida) {
+        this.alternativa_escogida = alternativa_escogida;
     }
-    
     
 }

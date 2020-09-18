@@ -11,6 +11,10 @@ public class Conexion implements IConexion{
     public Foods QueryFoods(String combo) {
     Foods comida = new Foods();
     List<String> elementos = new ArrayList<String>();
+    List<Alternativas> alternativas = new ArrayList<Alternativas>();
+    Alternativas alt = new Alternativas();
+    
+    
         switch(combo){
             case "desayuno1":{
                 comida.setNombre_combo("Desayuno 1");
@@ -20,6 +24,16 @@ public class Conexion implements IConexion{
                 elementos.add("Pan");
                 elementos.add("Bebida");
                 comida.setPrecio(25);
+                alt.setAlternativa_base("Huevos");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Frijoles");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Plátanos");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Pan");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Bebida");
+                alternativas.add(alt);
                 break;
             }
             case "desayuno2":{
@@ -73,91 +87,7 @@ public class Conexion implements IConexion{
     return comida;
     }
 
-    @Override
-    public Alternativas QueryAltern(String alternativa) {
-        Alternativas altern = new Alternativas();
-        List<String> elementos = new ArrayList<String>();
-        switch(alternativa){
-            case "Huevos":{
-                altern.setAlternativa_inic("Huevos");
-                elementos.add("Estrellados");
-                elementos.add("Revueltos");
-                elementos.add("Omellette");
-                break;
-            }
-            case "Frijoles":{
-                altern.setAlternativa_inic("Frijoles");
-                elementos.add("Parados");
-                elementos.add("Volteados");
-                break;
-            }
-            case "Plátanos":{
-                altern.setAlternativa_inic("Plátanos");
-                elementos.add("Fritos");
-                elementos.add("Cocidos");
-                break;
-            }
-            case "Pan":{
-                altern.setAlternativa_inic("Pan");
-                elementos.add("Blanco");
-                elementos.add("Integral");
-                break;
-            }
-            case "Bebida_desayuno_cena":{
-                altern.setAlternativa_inic("Bebida");
-                elementos.add("Café");
-                elementos.add("Té");
-                elementos.add("Jugo");
-                break;
-            }
-            case "Papas":{
-                altern.setAlternativa_inic("Papas");
-                elementos.add("Fritas");
-                elementos.add("Al vapor");
-                elementos.add("Horneadas");
-                break;
-            }
-            case "Ensalada":{
-                altern.setAlternativa_inic("Ensalada");
-                elementos.add("Verde");
-                elementos.add("César");
-                elementos.add("Asiática");
-                break;
-            }
-            case "Pollo":{
-                altern.setAlternativa_inic("Pollo");
-                elementos.add("Frito");
-                elementos.add("A la parrilla");
-                break;
-            }
-            case "Bebida_almuerzo":{
-                altern.setAlternativa_inic("Bebida");
-                elementos.add("Gaseosa");
-                elementos.add("Té frío");
-                elementos.add("Agua pura");
-                break;
-            }
-            case "Sopa":{
-                altern.setAlternativa_inic("Sopa");
-                elementos.add("Tomate");
-                elementos.add("Frijol");
-                break;
-            }
-            case "Postre":{
-                altern.setAlternativa_inic("Postre");
-                elementos.add("Helado");
-                elementos.add("Pastel");
-                elementos.add("Flan");
-                elementos.add("Gelatina");
-                break;
-            }
-            default:{
-                altern.setAlternativa_inic("NO_CURRENT_SELECT");
-            }
-        }
-        altern.setElem_altern(elementos);
-        return altern;
-    }
+    
 
     @Override
     public Extras QueryExtras(String tiempo) {
@@ -189,10 +119,73 @@ public class Conexion implements IConexion{
             default:{
                 }
         }
-        extra.setExtra(matrz);
-        
-        
         return extra;
+    }
+
+    @Override
+    public List<Alternativas> QueryAltern(String combo) {        
+        List<Alternativas> alternativas = new ArrayList<Alternativas>();
+        Alternativas alt = new Alternativas();    
+    
+        switch(combo){
+            case "desayuno1":{
+                alt.setAlternativa_base("Huevos");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Frijoles");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Plátanos");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Pan");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Bebida");
+                alternativas.add(alt);
+                break;
+            }
+            case "desayuno2":{
+                alt.setAlternativa_base("Bebida");
+                alternativas.add(alt);
+                break;
+            }
+            case "desayuno3":{
+                alt.setAlternativa_base("Bebida");
+                alternativas.add(alt);
+                break;
+            }
+            case "almuerzo1":{
+                alt.setAlternativa_base("Papas");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Bebida");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Postre");
+                alternativas.add(alt);
+                break;
+            }
+            case "almuerzo2":{
+                alt.setAlternativa_base("Ensalada");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Pollo");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Sopa");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Bebida");
+                alternativas.add(alt);
+                break;
+            }
+            case "cena1":{
+                alt.setAlternativa_base("Huevos");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Frijoles");
+                alternativas.add(alt);
+                alt.setAlternativa_base("Bebida");
+                alternativas.add(alt);
+                break;
+            }
+            default:{
+                alt.setAlternativa_base("NO_CURRENT_SELECT");
+                break;
+            }
+        }
+    return alternativas;
     }
     
 }

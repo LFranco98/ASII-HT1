@@ -1,24 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package www.AntiguaBurger.com.AntiguaBurger.Model;
 
-/**
- *
- * @author Danielmced
- */
-public class Cashier {
-    String nombre;
+public class Cashier implements ICashier{
+    private String username;
+    private String nombre;  
 
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }    
+      
+    @Override
     public String getNombre() {
         return nombre;
     }
 
+    @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
 }

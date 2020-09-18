@@ -5,15 +5,13 @@
  */
 package www.AntiguaBurger.com.AntiguaBurger.Model;
 
-import java.util.List;
-
 /**
  *
  * @author Danielmced
  */
-public interface IConexion {
-    public Foods QueryFoods(String combo);
-    public List<Alternativas> QueryAltern(String combo);
-    public Extras QueryExtras(String tiempo);
-    
+public interface ICliente {
+    public String getNombre();
+    public void setNombre(String nombre);
+    public String getNit();
+    public void setNit(String nit);
 }

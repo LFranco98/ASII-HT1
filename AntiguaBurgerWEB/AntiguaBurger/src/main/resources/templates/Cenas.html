@@ -11,52 +11,55 @@
   </head>
   <body>
       <p th:text=" 'Hola, '+${cashier} + '!'">
-          <div>
+        <br>
+        <div>
           <ul class="nav nav-tabs">
             <li class="nav-item">
-                <form action="#" th:action="@{/desayunos}" th:object="${cashier1}" method="post">
+                <a th:href="@{/desayunos}">
                     <button  type="submit" class="btn btn-primary" id="btn-desayuno" name="btn-desayuno" >Desayuno</button>
-                </form>
+                </a>
             </li>
             <li class="nav-item">
-                <form action="#" th:action="@{/almuerzos}" th:object="${cashier1}" method="post">
+                <a th:href="@{/almuerzos}">
                     <button  type="submit" class="btn btn-primary" id="btn-almuerzo" name="btn-almuerzo" >Almuerzo</button>
-                </form>
+                </a>
             </li>
             <li class="nav-item">
-                <form action="#" th:action="@{/Cenas}" th:object="${cashier1}" method="post">
+                <a th:href="@{/cenas}">
                     <button  type="submit" class="btn btn-primary" id="btn-cena" name="btn-cena" >Cena</button>
-                </form>
+                </a>
             </li>
           </ul>
-      </div>
+        </div>
     <div>
-        <form>
-            <div class="form-check-inline" id="form-cena-1">
+        <br>
+        <br>
+        <form th:action="@{/opt_desayunos}" th:object="${opciondes}" method="post">
+            <div class="form-check-inline" id="form-desayuno-1">
                 <ul class="list-group">
                   <li class="list-group-item d-flex justify-content-between align-items-center active">
                     <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="op-cena" id="op-cena" th:field="*{opcion}" th:value="'cena'" th:text="${combo} + ' (Q.' + ${precio} + '.00)'">
+                      <input type="radio" class="form-check-input" name="optradio" th:field="*{opcion}" th:value="${'cena1'}">
+                      Cena 1 (Q28.00)
                     </label>
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Huevos
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Frijoles
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Tortillas
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Bebida
-                    <span class="badge badge-secondary badge-pill"></span>
+                  </li>
                 </ul>
             </div>
+
+            <br> </br>
+            <button type="submit" class="btn btn-primary" id="btn-ordenar" name="btn-ordenar">Ordenar</button>
         </form>
     </div>
       

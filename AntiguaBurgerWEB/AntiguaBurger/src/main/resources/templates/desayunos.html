@@ -11,101 +11,94 @@
   </head>
   <body>
       <p th:text=" 'Hola, '+${cashier} + '!'">
-      <div>
+        <br>
+        <div>
           <ul class="nav nav-tabs">
             <li class="nav-item">
-                <form action="#" th:action="@{/desayunos}" th:object="${cashier1}" method="post">
+                <a th:href="@{/desayunos}">
                     <button  type="submit" class="btn btn-primary" id="btn-desayuno" name="btn-desayuno" >Desayuno</button>
-                </form>
+                </a>
             </li>
             <li class="nav-item">
-                <form action="#" th:action="@{/almuerzos}" th:object="${cashier1}" method="post">
+                <a th:href="@{/almuerzos}">
                     <button  type="submit" class="btn btn-primary" id="btn-almuerzo" name="btn-almuerzo" >Almuerzo</button>
-                </form>
+                </a>
             </li>
             <li class="nav-item">
-                <form action="#" th:action="@{/Cenas}" th:object="${cashier1}" method="post">
+                <a th:href="@{/cenas}">
                     <button  type="submit" class="btn btn-primary" id="btn-cena" name="btn-cena" >Cena</button>
-                </form>
+                </a>
             </li>
           </ul>
-      </div>
+        </div>
     <div>
-        <form>
+        <br>
+        <form action="#" th:action="@{/opt_desayunos}" th:object="${opciondes}" method="post">
             <div class="form-check-inline" id="form-desayuno-1">
                 <ul class="list-group">
                   <li class="list-group-item d-flex justify-content-between align-items-center active">
                     <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="op-desayuno" id="op-desayuno1" th:field="*{opcion}" th:value="'desayuno1'" th:text="${combo1} + ' (Q.' + ${precio1} + '.00)'">
+                      <input type="radio" class="form-check-input" name="optradio" th:field="*{opcion}" th:value="${'desayuno1'}">
+                      Desayuno 1 (Q25.00)
                     </label>
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Huevos
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Frijoles
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Plátanos
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Pan
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     - Bebida
-                    <span class="badge badge-secondary badge-pill"></span>
                   </li>
                 </ul>
             </div>
-            <div class="form-check-inline align-left" name="form-desayuno-2">
-              <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center active">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="op-desayuno" id="opdesayuno2" th:field="*{opcion}" th:value="'desayuno2'" th:text="${combo2} + ' (Q.' + ${precio2} + '.00)'">
-                  </label>
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  - Cereal
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  - Fruta
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  - Bebida
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-              </ul>
+            <div class="form-check-inline" id="form-desayuno-2">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center active">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="optradio" th:field="*{opcion}" th:value="${'desayuno2'}">
+                      Desayuno 2 (Q18.00)
+                    </label>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    - Cereal
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    - Fruta
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    - Bebida
+                  </li>
+                </ul>
             </div>
-            <div class="form-check-inline align-left" name="form-desayuno-3">
-              <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center active">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="op-desayuno" id="opdesayuno3" th:field="*{opcion}" th:value="'desayuno3'" th:text="${combo3} + ' (Q.' + ${precio3} + '.00)'">
-                  </label>
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  - Avena
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  - Fruta
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  - Bebida
-                  <span class="badge badge-secondary badge-pill"></span>
-                </li>
-              </ul>
+            <div class="form-check-inline" id="form-desayuno-3">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center active">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="optradio" th:field="*{opcion}" th:value="${'desayuno3'}">
+                      Desayuno 3 (Q20.00)
+                    </label>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    - Avena
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    - Fruta
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    - Bebida
+                  </li>
+                </ul>
             </div>
+            <br>
+            <button type="submit" class="btn btn-primary" id="btn-ordenar" name="btn-ordenar">Ordenar</button>
         </form>
     </div>
       

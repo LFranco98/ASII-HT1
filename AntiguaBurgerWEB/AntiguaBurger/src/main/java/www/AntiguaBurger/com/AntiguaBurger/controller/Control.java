@@ -1,70 +1,86 @@
 
 package www.AntiguaBurger.com.AntiguaBurger.controller;
+import java.util.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import www.AntiguaBurger.com.AntiguaBurger.Model.Alternativas;
 import www.AntiguaBurger.com.AntiguaBurger.Model.Cashier;
 import www.AntiguaBurger.com.AntiguaBurger.Model.Conexion;
 import www.AntiguaBurger.com.AntiguaBurger.Model.Foods;
 import www.AntiguaBurger.com.AntiguaBurger.Model.IConexion;
 import www.AntiguaBurger.com.AntiguaBurger.Model.IFoods;
+import www.AntiguaBurger.com.AntiguaBurger.Model.IOrder;
+import www.AntiguaBurger.com.AntiguaBurger.Model.Opcion;
+import www.AntiguaBurger.com.AntiguaBurger.Model.Order;
 
 @Controller
-public class Control implements IOrderControl{
+public class Control{
 
-    @Override
-    @GetMapping
+    IOrder orden;
+    int ordernumber=0;
+    
+    @GetMapping("/")
     public String viewIndex(Model model) {
         model.addAttribute("cashier", new Cashier());
         return "index";
     }
+    
+    @PostMapping("/menus")
+    public String viewMenus(@ModelAttribute Cashier cashier, Model model){
+        try{
+            orden = new Order();
+            ordernumber++;
+            cashier.setNombre(cashier.getUsername());
+            orden.setCashier(cashier);            
+            orden.setNumeroorden(ordernumber);
+            orden.setFecha(new Date());
+            model.addAttribute("exception","");
+        }catch(Exception ex){
+            model.addAttribute("exception","Ups.. Ha sucedido un error inesperado: " + ex.getMessage());
+        }finally{return "menus";}
+    }
 
-    @Override
-    @PostMapping("/desayunos")
-    public String viewDesayuno(@ModelAttribute Cashier cashier, Model model) {
-        model.addAttribute("cashier", cashier.getNombre());
-        IConexion connect = new Conexion();
-        IFoods comida = new Foods();
-        for(int i=1;i<=3;i++){
-            comida = connect.QueryFoods("desayuno"+i);
-            model.addAttribute("combo"+i, comida.getNombre_combo());
-            model.addAttribute("precio"+i, comida.getPrecio());
-        }
-        model.addAttribute("cashier1", new Cashier());
-        model.addAttribute("opcion", new String());
+
+    @GetMapping("/desayunos")
+    public String viewDesayuno(Model model) {
+        model.addAttribute("cashier", orden.getCashier().getNombre());
+        model.addAttribute("opciondes", new Opcion());
+        
         return "desayunos";
     }
 
-    @Override
-    @PostMapping("/almuerzos")
-    public String viewAlmuerzo(@ModelAttribute Cashier cashier, Model model) {
-        model.addAttribute("cashier", cashier.getNombre());
-        IConexion connect = new Conexion();
-        IFoods comida = new Foods();
-        for(int i=1;i<=2;i++){
-            comida = connect.QueryFoods("almuerzo"+i);
-            model.addAttribute("combo"+i, comida.getNombre_combo());
-            model.addAttribute("precio"+i, comida.getPrecio());
-        }
-        model.addAttribute("cashier1", new Cashier());
-        model.addAttribute("opcion", new String());
+    @PostMapping("/opt_desayunos")
+    public String viewOptDesayuno(@ModelAttribute Opcion opcion, Model model){
+        IConexion cn = new Conexion();
+        orden.setCombo(cn.QueryFoods(opcion.getOpcion()));
+        orden.setAlternativas(cn.QueryAltern(opcion.getOpcion()));
+        model.addAttribute("combo", orden.getCombo().getNombre_combo());
+        model.addAttribute("alt", new Alternativas());
+        model.addAttribute("alternativasAorden", orden);
+        model.addAttribute("opcion", new Opcion());
+        Alternativas alt;
+        //alt.setAlternativa_base("dfklaj");
+        //orden.setAlternativas(alt);
+        
+        return "opt_desayunos";
+    }
+
+    @GetMapping("/almuerzos")
+    public String viewAlmuerzo(Model model) {
+        model.addAttribute("cashier", orden.getCashier().getNombre());
+        model.addAttribute("opcionalm", new Opcion());
         return "almuerzos";
     }
 
-    @Override
-    @PostMapping("/Cenas")
-    public String viewCena(@ModelAttribute Cashier cashier, Model model) {
-        model.addAttribute("cashier", cashier.getNombre());
-        IConexion connect = new Conexion();
-        IFoods comida = new Foods();
-            comida = connect.QueryFoods("cena1");
-            model.addAttribute("combo", comida.getNombre_combo());
-            model.addAttribute("precio", comida.getPrecio());
-        model.addAttribute("cashier1", new Cashier());
-        model.addAttribute("opcion", new String());
-        return "almuerzos";
+
+    @GetMapping("/cenas")
+    public String viewCena(Model model) {
+        model.addAttribute("cashier", orden.getCashier().getNombre());
+        model.addAttribute("opciondes", new Opcion());
+        return "cenas";
     }
     
 }
